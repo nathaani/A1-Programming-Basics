@@ -68,3 +68,14 @@ function showPatients() {
 
 
 console.log(showPatients());
+
+let randomPatientId;
+function getPatients(){
+     let randomPatients = Math.floor(Math.random()* patients.length)
+
+     randomPatientId = patients[randomPatients].id
+     return randomPatientId;
+}
+
+getPatients();
+console.log(randomPatientId);
