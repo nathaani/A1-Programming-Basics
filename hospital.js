@@ -35,3 +35,36 @@ let patients = [
     },
    
 ]
+
+let hospital;
+let header;
+let ul;
+let line;
+let closeul;
+
+
+function showPatients() {
+     hospital= "<h1> "+ hospitalName + " </h1>"
+     hospital = console.log(hospital)
+
+     for (let i = 0; i<3; i++){
+
+
+         header = "<h2> "+ patients[i].fullName + ", " +  patients[i].dateOfBirth +" </h2>"
+         header = console.log(header)
+
+         console.log ("<ul>")
+
+         for(let Y = 0; Y<3; Y++){
+         
+            line = "<li> " + patients[i].symptoms[Y].symptom + " </li>"
+            line = console.log(line)
+
+        }
+
+        console.log ("</ul>")
+    }
+}
+
+
+console.log(showPatients());
