@@ -1,14 +1,15 @@
-let hospitalName = "Toronto Hospital"
-let patients = [
+let patients = {
+    hospitalName: "Toronto Hospital",
+    patientData: [
     {
         id: 1001,
         fullName: "Natalie Lew",
         dateOfBirth: new Date (1995,3,10).toDateString(),
         symptoms: 
-            [
-                {symptom: "cough"},
-                {symptom: "sneeze"},
-                {symptom: "rash"}
+            [   
+                "cough",
+                "sneeze",
+                "rash"
             ]
     },
     {
@@ -17,9 +18,9 @@ let patients = [
         dateOfBirth: new Date (1992,12,3).toDateString(),
         symptoms: 
             [
-                {symptom: "fever"},
-                {symptom: "swelling"},
-                {symptom: "nausea"}
+                "fever",
+                "swelling",
+                "nausea"
             ]
     },
     {
@@ -28,54 +29,48 @@ let patients = [
         dateOfBirth: new Date (1970,12,31).toDateString(),
         symptoms:
             [
-                {symptom: "high temperature"},
-                {symptom: "cough"},
-                {symptom: "increase in apetite"}
+                "high temperature",
+                "cough",
+                "increase in apetite"
             ]
-    },
-   
-]
-
-let hospital;
-let header;
-let ul;
-let line;
-let closeul;
-
-
-function showPatients() {
-     hospital= "<h1> "+ hospitalName + " </h1>"
-     hospital = console.log(hospital)
-
-     for (let i = 0; i<3; i++){
-
-
-         header = "<h2> "+ patients[i].fullName + ", " +  patients[i].dateOfBirth +" </h2>"
-         header = console.log(header)
-
-         console.log ("<ul>")
-
-         for(let Y = 0; Y<3; Y++){
-         
-            line = "<li> " + patients[i].symptoms[Y].symptom + " </li>"
-            line = console.log(line)
-
         }
-
-        console.log ("</ul>")
-    }
+    ]
+   
 }
 
+let hospital;
+let line;
 
-console.log(showPatients());
+function showPatients() {
+     hospital= "<h1> "+ patients.hospitalName + " </h1>";
+    
+     for (let i = 0; i<patients.patientData.length; i++){
+         line += "<h2> "+ patients.patientData[i].fullName + ", " +  patients.patientData[i].dateOfBirth +" </h2>";
+         line += "<ul>";
+
+         for(let Y = 0; Y<patients.patientData.length; Y++){
+         
+            line += "<li> " + patients.patientData[Y].symptoms[Y] + " </li>";
+          
+        }
+        line += "</ul>";
+
+        
+    }
+    let returnpatients = hospital + line;
+    return returnpatients;
+}
+let showPatientsReturn = showPatients();
+console.log(showPatientsReturn);
+
 
 let randomPatientId;
 function getPatients(){
-     let randomPatients = Math.floor(Math.random()* patients.length)
+     let randomPatients = Math.floor(Math.random()* patients.patientData.length);
 
-     randomPatientId = patients[randomPatients].id
+     randomPatientId = patients.patientData[randomPatients].id;
      return randomPatientId;
 }
 
-getPatients();
-console.log(randomPatientId);
+let getPatientReturn = getPatients();
+console.log(getPatientReturn);
